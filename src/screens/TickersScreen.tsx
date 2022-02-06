@@ -1,15 +1,6 @@
 import { useIsFocused } from '@react-navigation/native';
 import { useEffect, useRef, useState } from 'react';
-import {
-  Button,
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-  ActivityIndicator,
-  FlatList,
-  Dimensions,
-} from 'react-native';
+import { StyleSheet, View, FlatList } from 'react-native';
 import { ErrorItem } from '../components/ErrorItem';
 import {
   Indicator,
@@ -45,7 +36,6 @@ export const TickersScreen = () => {
   }, [isFocus]);
   if (!isFocus) {
     clearInterval(interval.current);
-    console.log('BY');
   }
 
   return (

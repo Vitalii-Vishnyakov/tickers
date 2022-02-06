@@ -1,10 +1,4 @@
-import {
-  ActivityIndicator,
-  Button,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 export const ErrorItem = (props: any) => {
   return (

@@ -34,7 +34,6 @@ export const requestData = async (): Promise<Idata[]> => {
       percentChange: 'Ошибка',
     });
   }
-  console.log('hi');
 
   return dt;
 };
