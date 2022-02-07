@@ -4,6 +4,14 @@ import {
   Text,
   View,
 } from 'react-native';
+const normalizeLen = (str: string) => {
+  if (str.length > 10) {
+    return str.substring(0, 10);
+  } else {
+    return str;
+  }
+};
+
 export const Indicator = () => (
   <ActivityIndicator
     style={styles.indicator}
@@ -15,25 +23,26 @@ export const Indicator = () => (
 export const TableItem = (props: any) => {
   return (
     <View style={styles.container}>
-      <View style={styles.ticker}>
-        <Text style={styles.data}>{props.ticker}</Text>
-        {!props.isLoading && <Indicator></Indicator>}
-      </View>
+      {!props.isLoading && <Indicator></Indicator>}
       <View style={styles.info}>
         <View>
-          <Text style={styles.title}>Последняя цена</Text>
-          <Text style={styles.data}>{props.last}</Text>
-        </View>
-        <View>
-          <Text style={styles.title}>Максимум</Text>
           <Text style={styles.data}>
-            {props.highestBid}
+            {normalizeLen(props.ticker)}
           </Text>
         </View>
         <View>
-          <Text style={styles.title}>Изменение %</Text>
           <Text style={styles.data}>
-            {props.percentChange}
+            {normalizeLen(props.last)}
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.data}>
+            {normalizeLen(props.highestBid)}
+          </Text>
+        </View>
+        <View>
+          <Text style={styles.data}>
+            {normalizeLen(props.percentChange)}
           </Text>
         </View>
       </View>
@@ -59,12 +68,11 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  title: {
-    color: 'white',
-  },
-  data: { color: '#f77111', fontSize: 15 },
+
+  data: { color: '#f77111', fontSize: 14 },
   indicator: {
     position: 'absolute',
-    right: 0,
+    right: 3,
+    top: 3,
   },
 });
